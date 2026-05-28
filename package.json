@@ -1,0 +1,16 @@
+{
+  "name": "minutes",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "scripts": {
+    "convert-minutes": "pandoc --standalone --wrap none --from docx --to gfm --filter pandoc-conversions.js -o",
+    "clean-text": "./replacements.js"
+  },
+  "dependencies": {
+    "cheerio": "^1.2.0",
+    "pandoc-filter": "^2.2.0"
+  }
+}

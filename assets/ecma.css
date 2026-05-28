@@ -1,0 +1,330 @@
+/* Web version uses IBM Plex Sans for body, publication version only uses it for special characters */
+/* https://fonts.googleapis.com/css2?family=IBM%20Plex%20Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap */
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./fonts/IBMPlexSans-Regular-SlashedZero.woff2"), local("IBM Plex Sans Regular"), local("IBMPlexSans-Regular");
+}
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./fonts/IBMPlexSans-Bold-SlashedZero.woff2"), local("IBM Plex Sans Bold"), local("IBMPlexSans-Bold");
+}
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./fonts/IBMPlexSans-Italic-SlashedZero.woff2"), local("IBM Plex Sans Italic"), local("IBMPlexSans-Italic");
+}
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./fonts/IBMPlexSans-BoldItalic-SlashedZero.woff2"), local("IBM Plex Sans Bold Italic"), local("IBMPlexSans-BoldItalic");
+}
+
+/* https://fonts.googleapis.com/css2?family=IBM%20Plex%20Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap */
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./fonts/IBMPlexMono-Regular-SlashedZero.woff2"), local("IBM Plex Mono Regular"), local("IBMPlexMono-Regular");
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./fonts/IBMPlexMono-Bold-SlashedZero.woff2"), local("IBM Plex Mono Bold"), local("IBMPlexMono-Bold");
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./fonts/IBMPlexMono-Italic-SlashedZero.woff2"), local("IBM Plex Mono Italic"), local("IBMPlexMono-Italic");
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./fonts/IBMPlexMono-BoldItalic-SlashedZero.woff2"), local("IBM Plex Mono Bold Italic"), local("IBMPlexMono-BoldItalic");
+}
+
+@font-face {
+  font-family: "Arial Plus";
+  src: local("Arial");
+}
+
+@font-face {
+  font-family: "Arial Plus";
+  unicode-range: U+30;
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/IBMPlexMono-Regular-SlashedZero.woff2"), local("IBM Plex Mono Regular"), local("IBMPlexMono-Regular");
+}
+
+@font-face {
+  font-family: "Arial Plus";
+  unicode-range: U+221e;
+  font-style: normal;
+  font-weight: 400;
+  src: local("DejaVu Math TeX Gyre"), url("./fonts/IBMPlexMono-Regular-SlashedZero.woff2"), local("IBM Plex Mono Regular"), local("IBMPlexMono-Regular");
+}
+
+@font-face {
+  font-family: "Arial Plus";
+  unicode-range: U+30;
+  font-style: normal;
+  font-weight: 700;
+  src: url("./fonts/IBMPlexMono-Bold-SlashedZero.woff2"), local("IBM Plex Mono Bold"), local("IBMPlexMono-Bold");
+}
+
+@font-face {
+  font-family: "Arial Plus";
+  unicode-range: U+221e;
+  font-style: normal;
+  font-weight: 700;
+  src: local("DejaVu Math TeX Gyre"), url("./fonts/IBMPlexMono-Bold-SlashedZero.woff2"), local("IBM Plex Mono Bold"), local("IBMPlexMono-Bold");
+}
+
+@font-face {
+  font-family: "Arial Plus";
+  unicode-range: U+30;
+  font-style: italic;
+  font-weight: 400;
+  src: url("./fonts/IBMPlexMono-Italic-SlashedZero.woff2"), local("IBM Plex Mono Italic"), local("IBMPlexMono-Italic");
+}
+
+@font-face {
+  font-family: "Arial Plus";
+  unicode-range: U+221e;
+  font-style: italic;
+  font-weight: 400;
+  src: local("DejaVu Math TeX Gyre"), url("./fonts/IBMPlexMono-Italic-SlashedZero.woff2"), local("IBM Plex Mono Italic"), local("IBMPlexMono-Italic");
+}
+
+@font-face {
+  font-family: "Arial Plus";
+  unicode-range: U+30;
+  font-style: italic;
+  font-weight: 700;
+  src: url("./fonts/IBMPlexMono-BoldItalic-SlashedZero.woff2"), local("IBM Plex Mono Bold Italic"), local(IBMPlexMono-BoldItalic);
+}
+
+@font-face {
+  font-family: "Arial Plus";
+  unicode-range: U+221e;
+  font-style: italic;
+  font-weight: 700;
+  src: local("DejaVu Math TeX Gyre"), url("./fonts/IBMPlexMono-BoldItalic-SlashedZero.woff2"), local("IBM Plex Mono Bold Italic"), local("IBMPlexMono-BoldItalic");
+}
+
+:root {
+  --page-number-style: decimal;
+  --ecma-orange: #fc7c00;
+  --header-black: #333;
+  --header-light-grey: #808080;
+  --body-font: "Arial Plus", var(--fallback-font);
+  --fallback-font: Arial, Helvetica, "IBM Plex Sans", sans-serif, "DejaVu Math TeX Gyre", Symbola, monospace;
+}
+
+@page {
+  size: A4;
+  margin-top: 28mm;
+  margin-bottom: 20mm;
+  margin-inside: 19mm;
+  margin-outside: 13mm;
+
+  @bottom-left {
+    font-family: var(--fallback-font);
+  }
+
+  @bottom-right {
+    font-family: var(--fallback-font);
+  }
+
+  @bottom-center {
+    background-image: url("./img/ecma-footer.svg");
+    background-size: contain;
+    background-position: -2mm center;
+    background-repeat: no-repeat;
+    content: "Ecma International   Rue du Rhône 114   CH-1204 Geneva   T/F: +41 22 849 6000/01   www.ecma-international.org";
+    font-family: var(--fallback-font);
+    font-size: 8pt;
+  }
+}
+
+@page :verso {
+  @top-left {
+    content: url("./img/ecma-header.svg");
+    padding-top: 5mm;
+  }
+
+  @bottom-left {
+    content: counter(page, var(--page-number-style));
+    font-size: 10pt;
+  }
+}
+
+@page :recto {
+  @top-right {
+    content: url("./img/ecma-header.svg");
+    padding-top: 5mm;
+  }
+
+  @bottom-right {
+    content: counter(page, var(--page-number-style));
+    font-size: 10pt;
+  }
+}
+
+body {
+  color: #000;
+  font-family: var(--body-font);
+  font-size: 10pt;
+  font-variant-numeric: slashed-zero;
+  line-height: 1.2;
+  margin: 0;
+  padding: 0;
+  text-align: justify;
+  word-wrap: break-word;
+}
+
+a:any-link {
+  color: var(--ecma-orange);
+}
+
+p {
+  hyphens: auto;
+  letter-spacing: 0.3pt;
+  margin: 0 0 6pt;
+  padding-left: 0;
+  orphans: 2;
+  overflow-wrap: break-word;
+  text-rendering: optimizeLegibility;
+  text-wrap: pretty;
+  widows: 2;
+}
+
+ul {
+  margin-left: 0;
+  padding-left: 4mm;
+}
+
+li::marker {
+  font-weight: bold;
+}
+
+h1:first-of-type {
+  color: var(--ecma-orange);
+  font-size: 14pt;
+  font-style: italic;
+  font-weight: bold;
+  text-wrap: balance;
+  width: 100%;
+}
+
+h1 {
+  margin: 3pt 0 6pt;
+}
+
+h2, h3, h4, h5, h6 {
+  letter-spacing: 1pt;
+}
+
+h2 {
+  color: var(--header-light-grey);
+  font-size: 14pt;
+  margin: 12pt 0 6pt;
+}
+
+h2, h2 ~ p, h2 ~ ul {
+  margin-left: 12mm;
+}
+
+h3 {
+  color: var(--header-black);
+  font-size: 12pt;
+  margin: 3pt 0 3pt;
+}
+
+h3, h3 ~ p, h3 ~ ul {
+  margin-left: 16mm;
+}
+
+h4, h5, h6 {
+  color: var(--header-black);
+  font-size: 10pt;
+  margin: 0 0 3pt;
+}
+
+h4, h4 ~ p, h4 ~ ul {
+  margin-left: 20mm;
+}
+
+h5, h5 ~ p, h5 ~ ul {
+  margin-left: 24mm;
+}
+
+h6, h6 ~ p, h6 ~ ul {
+  margin-left: 28mm;
+}
+
+figure:has(> img) {
+  text-align: center;
+}
+
+table {
+  margin: 0 auto 10mm;
+  min-width: 75%;
+}
+
+caption {
+  background: var(--header-light-grey);
+  color: #ffffff;
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding: 0.5lh 0;
+}
+
+td {
+  padding-left: 4mm;
+}
+
+code {
+  font-weight: bold;
+  font-family: "Comic Code",
+  "IBM Plex Mono",
+  monospace;
+  white-space: pre;
+}
+
+pre code {
+  font-weight: inherit;
+  display: inline-block;
+  margin-left: 20mm;
+}
+
+ol li:first-child {
+  break-after: avoid-page;
+  break-before: avoid-page;
+}
+
+ol li:last-child {
+  break-before: avoid-page;
+}

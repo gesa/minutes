@@ -236,12 +236,12 @@ switch (source) {
         to: "\n$1\* "
       },
       {
-        from: /\*{3}/g,
+        from: /\*{3,4}/g,
         to: "**"
       },
       {
-        from: /\[(.+?)#(.+?)]/g,
-        to: "[$1\\#$2]"
+        from: /\[(http:.+?)#([0-9]+)]/g,
+        to: "[$1#$2]"
       },
       {
         from: /\|\n\n\|/g,
@@ -249,6 +249,14 @@ switch (source) {
       },
       {
         from: "|:---|:---|\n",
+        to: ""
+      },
+      {
+        from: /Ecma\/TC55\/202[5-6]\/XY\\\nEcma\/GA\/202[5-7]\/XY\n{0,2}/,
+        to: ""
+      },
+      {
+        from: /\n *<!-- -->\n*/,
         to: ""
       });
     break;
@@ -274,7 +282,7 @@ function makeReplacementsInFile(fileContents) {
     if (typeof to === 'function') {
       console.log(`Replacing ${fromString.replace(/\n/g, "\\n")} with replacer function`);
     } else {
-      console.log(`Replacing ${fromString.replace(/\n/g, "\\n")} with ${to.replace(/\n/g, "\\n")}`);
+      console.log(`Replacing ${fromString.replace(/\n/g, "\\n")} with ${to === "" ? 'an empty string.' : to.replace(/\n/g, "\\n")}`);
     }
     return text.replace(from, to);
   }, fileContents);

@@ -40,20 +40,22 @@ Meeting artefacts are much more complex.
 > [!IMPORTANT]
 > This document assumes you have [`pandoc`](https://pandoc.org) and [`prince-books`](https://www.princexml.com/) installed somewhere on your $PATH
 > 
-> Unless stated otherwise, all paths assume cwd is the **same as this document**, and that this repo has a **shared parent directory** of a local clone of the [TC39 notes repo](https://github.com/tc39/notes).
+> Unless stated otherwise, all paths assume cwd is the **same as this document**.
 
-Save yourself some touble and do
+First save yourself some touble and do
 
 ```shell
-export CURRENT_YYYY_MM="YYYY-MM" && export MEETING_NUMBER="NNNth"
+export CURRENT_YYYY_MM="YYYY-MM" && export MEETING_NUMBER="NNNth" TC39_NOTES_DIR="../TC39/notes"
 ```
 
 Using the version history feature in Google Docs, mark the current version of the document as a final draft for publication. Download each day as a Markdown file, name it MMMM-dd.md, and save it in the appropriate ../notes/meetings/yyyy-MM directory. Delete the text contents of the Google doc and replace with a message that the notes will soon be available as a PR in the Notes repo.
 
+> Transcript deleted for preparation before GitHub pull request.
+
 Run safe replacements. Do
 
 ```shell
-npm run clean-text tc39 ../notes/meetings/"$CURRENT_YYYY_MM"/
+npm run clean-text tc39 "$TC39_NOTES_DIR"/meetings/"$CURRENT_YYYY_MM"/
 ```
 
 ### Search and replace in Markdown
@@ -78,7 +80,7 @@ npm run clean-text tc39 ../notes/meetings/"$CURRENT_YYYY_MM"/
 Do
 
 ```shell
-./tc39/audit-attendees.js ../notes/meetings/"$CURRENT_YYYY_MM"/
+./tc39/audit-attendees.js "$TC39_NOTES_DIR"/meetings/"$CURRENT_YYYY_MM"/
 ```
 
 And use the resulting list to append missing attendees to each day's list, making sure every TLA is available for future readers.
@@ -89,7 +91,9 @@ Commit your changes. **Before opening a PR** on the [TC39 notes repo](https://gi
 
 ## Prepare attendee list
 
-Get printed & online sign-in sheets, audit for accuracy and produce one sheet with headers Name, Email, Ecma Member. Make sure to confirm each listed org is a member org. Audit all participants who aren't delegates of a member org against invited expert list and approved observers. Save this as an xlsx file for posterity. Additionally, save a copy of this xlsx file to ./out/.
+Copy tc39/attendance-template.html ./out. Generate attendee list from Grist using custom widget, copy from textarea and paste in to body. Curse the fact that this is the easiest way to accomplish this goal.
+
+Also save an xlsx version of this data for posterity.
 
 ## Generate some PDFs
 
@@ -97,8 +101,8 @@ Get printed & online sign-in sheets, audit for accuracy and produce one sheet wi
 > These scripts expect `prince-books` to be in your $PATH. If you do not have a licence for `prince-books`, contact the secretariat.
 
 > [!WARNING]
-> These scripts are destructive—they will delete any file ending in .html in `../notes/meetings/yyyy-MM/` and in `./out/`
+> These scripts are destructive—they will delete any file ending in .html in `"$TC39_NOTES_DIR"/meetings/$CURRENT_YYYY_MM/` and in `./out/`
 
 ```shell
-CURRENT_YYYY_MM="YYYY-MM" MEETING_NUMBER="NNNth" ../tc39/generate-technical-notes.sh
+../tc39/generate-technical-notes.sh
 ```

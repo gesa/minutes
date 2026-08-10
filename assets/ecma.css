@@ -173,6 +173,7 @@
   @top-left {
     content: url("./img/ecma-header.svg");
     padding-top: 5mm;
+    width: 178mm;
   }
 
   @bottom-left {
@@ -185,6 +186,7 @@
   @top-right {
     content: url("./img/ecma-header.svg");
     padding-top: 5mm;
+    width: 178mm;
   }
 
   @bottom-right {

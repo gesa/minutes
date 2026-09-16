@@ -228,7 +228,11 @@ switch (source) {
     break;
   case 'pandoc':
     safeAutomaticReplacements.push({
-        from: / /g,
+        from: /^( *)\d+\.  */gm,
+        to: "$11. "
+      },
+      {
+        from: / /g,
         to: " "
       },
       {
@@ -252,12 +256,48 @@ switch (source) {
         to: ""
       },
       {
-        from: /Ecma\/TC55\/202[5-6]\/XY\\\nEcma\/GA\/202[5-7]\/XY\n{0,2}/,
+        from: /Ecma\/TC5[45]\/202[5-9]\/\d+\\\nEcma\/GA\/202[5-9]\/\d+\n{0,2}/,
         to: ""
       },
       {
         from: /\n *<!-- -->\n*/,
         to: ""
+      },
+      {
+        from: /^\*\*([^*\n]+?)[ :]*\*\*$/gm,
+        to: "## $1"
+      },
+      {
+        from: /^(#{1,6}) \d+(\.\d+)+ /gm,
+        to: "$1 "
+      },
+      {
+        from: /^(#{1,6}) \d+ /gm,
+        to: "$1 "
+      },
+      {
+        from: /^> ?/gm,
+        to: ""
+      },
+      {
+        from: /^( *(?:\d+\.|\*|-) .+)\n\n(<https?:\/\/.+>)$/gm,
+        to: "$1 $2"
+      },
+      {
+        from: /^( *(?:\d+\.|\*|-) .+)\n\n(?= *(?:\d+\.|\*|-))/gm,
+        to: "$1\n"
+      },
+      {
+        from: /^(\d+\. .+\n)((?:\* .+\n?)+)/gm,
+        to: (match, item, bullets) => item + bullets.replace(/^\* /gm, "    * ")
+      },
+      {
+        from: /^(#{1,6}) /gm,
+        to: (match, hashes) => "#".repeat(hashes.length + 1) + " "
+      },
+      {
+        from: /^Minutes of the: (.+)$/m,
+        to: "# $1"
       });
     break;
 }

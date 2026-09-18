@@ -240,8 +240,8 @@ switch (source) {
         to: "**"
       },
       {
-        from: /\[(http:.+?)#([0-9]+)]/g,
-        to: "[$1#$2]"
+        from: /\[https:\/{2}(www\.)?github\.com\/([A-Za-z0-9\_]+\/[A-Za-z0-9\_]+)\/(issue|pull)\/([0-9]+)]/g,
+        to: "[$2#$4]"
       },
       {
         from: /\|\n\n\|/g,
@@ -252,7 +252,7 @@ switch (source) {
         to: ""
       },
       {
-        from: /Ecma\/TC55\/202[5-6]\/XY\\\nEcma\/GA\/202[5-7]\/XY\n{0,2}/,
+        from: /Ecma\/TC[0-9]{2}\/202[0-9]\/XY\\\nEcma\/GA\/202[0-9]\/XY\n{0,2}/,
         to: ""
       },
       {

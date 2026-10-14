@@ -3,7 +3,7 @@
 import {readdir, readFile, writeFile} from 'node:fs/promises';
 import {basename, join} from 'node:path';
 
-const missingSpeakers = {};
+const missingSpeakers = [];
 const TLA = /^([A-Z]{2,3})( \(on queue\))?:/gm;
 const attendee = /^\|.+?\| *([A-Z]{2,3}).+$/gm;
 const mappedTLAs = new Map();
@@ -11,7 +11,7 @@ const mappedTLAs = new Map();
 readFile(join(process.argv[2], '..', '..','delegates.txt'), {encoding: 'utf-8'})
   .then((allDelegates) => {
     allDelegates.split('\n').map((line) => {
-      const info = /(.+?) \(([A-Z]{2,3})\)/.exec(line);
+      const info = /^(.+?) \(([A-Z]{2,3})\)$/.exec(line);
 
       if (info) mappedTLAs.set(info[2], info[1]);
     })
@@ -39,9 +39,9 @@ readdir(process.argv[2]).then(files => Promise.all(
       const missing = dedupedSpeakers.difference(dedupedAttendees);
       const attendeeList = [];
 
-      missing.forEach(personTLA => attendeeList.push(`| ${mappedTLAs.get(personTLA)} | ${personTLA} | |`))
+      missing.forEach(personTLA => attendeeList.push(personTLA))
 
-      missingSpeakers[basename(filename, '.md')] = attendeeList;
+      missingSpeakers.push({"date": basename(filename, '.md'), "speakers": attendeeList});
     })
   )).catch(err => console.error(err) ))
-  .then(() => console.dir(missingSpeakers, {depth: 3, colors: true}));
+  .then(() => console.log(JSON.stringify(missingSpeakers)));

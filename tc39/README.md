@@ -19,7 +19,7 @@ TC39 plenary artefacts are much more complex than most other TCs.
 First save yourself some touble and do
 
 ```shell
-export CURRENT_YYYY_MM="YYYY-MM" && export MEETING_NUMBER="NNNth" TC39_NOTES_DIR="../TC39/notes" # Update this path as appropriate
+export CURRENT_YYYY_MM="YYYY-MM" && export MEETING_NUMBER="NNNth" && export TC39_NOTES_DIR="../TC39/notes" # Update this path as appropriate
 ```
 
 Using the version history feature in Google Docs, mark the current version of the document as a final draft for publication. Download each day as a Markdown file, name it MMMM-dd.md, and save it in the appropriate ../notes/meetings/yyyy-MM directory. Delete the text contents of the Google doc and replace with a message that the notes will soon be available as a PR in the Notes repo.
@@ -57,7 +57,7 @@ Do
 ./tc39/audit-attendees.js "$TC39_NOTES_DIR"/meetings/"$CURRENT_YYYY_MM"/
 ```
 
-And use the resulting list to append missing attendees to each day's list, making sure every TLA is available for future readers.
+Drop the resulting JSON in the normalization widget. This will generate Markdown table rows with delegate name, TLA, and member name for any TLA which appears in the transcript but is excluded from the table at the top of the day. This ensures every TLA is available for future readers. (n.b. double-check "other" to modify either Invited Expert or Secretariat)
 
 ### Lint & open pull request
 

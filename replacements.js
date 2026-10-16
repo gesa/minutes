@@ -34,13 +34,25 @@ switch (source) {
         from: /\|` *$/gm,
         to: "|"
       },
+      {
+        from: /\\:\/\//gm,
+        to: "://"
+      },
+      {
+        from: /\\\$/g,
+        to: "$"
+      },
       // end Google Docs conversion to Markdown
       {
         from: / +$/gm, // Remove trailing spaces
         to: ""
       },
       {
-        from: /^!\[]\[image1].+!\[]\[image1]$/gm, //Remove cursor park animals
+        from: /^!\[]\[image1].+!\[]\[image1]$/gm, // Remove cursor park animals
+        to: ""
+      },
+      {
+        from: /\n\[image1]: <data:image\/png;base64,.+>$/gm, // Remove cursor park border images. This is specifically "image1" bc only targeting the tree.
         to: ""
       },
       {
@@ -239,8 +251,12 @@ switch (source) {
         from: /\*{3,4}/g,
         to: "**"
       },
-      {
-        from: /\[https:\/{2}(www\.)?github\.com\/([A-Za-z0-9\_]+\/[A-Za-z0-9\_]+)\/(issue|pull)\/([0-9]+)]/g,
+      { // GitHub raw URLs into useful links
+        from: /([^\(])(https:\/{2}(www\.)?github\.com\/([A-Za-z0-9_-]+?\/[A-Za-z0-9_-]+)\/(issues|pull)\/([0-9]+))/g,
+        to: "$1[$4#$6]($2)"
+      },
+      { // GitHub links-as-raw-URLs into useful links
+        from: /\[https:\/{2}(www\.)?github\.com\/([A-Za-z0-9_-]+\/[A-Za-z0-9_-]+)\/(issues|pull)\/([0-9]+)]/g,
         to: "[$2#$4]"
       },
       {
